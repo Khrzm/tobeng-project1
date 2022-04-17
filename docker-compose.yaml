@@ -1,0 +1,19 @@
+version: '2'
+
+networks:
+  network-laravel:
+    driver: bridge
+
+services:
+  laravel:
+    image: 'pentestingid/php8-nginx:basic'
+    container_name: laravel
+    networks:
+      - network-laravel
+    ports:
+      - 127.0.0.1:1234:8080
+    environment:
+      - DOMAIN=savira.xyz
+    volumes:
+      - ./:/var/www/html
+    restart: unless-stopped
